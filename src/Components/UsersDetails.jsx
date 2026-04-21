@@ -22,8 +22,8 @@ const handleNavigate = ()=>{
 
 //useParams hook ->
 const params = useParams();
-console.log(params);//same output as the main.jsx's params
-console.log(params.userId);//same output as the main.jsx's params
+// console.log(params);//same output as the main.jsx's params
+// console.log(params.userId);//same output as the main.jsx's params
 
   return (
     <div className="flex flex-col items-center">

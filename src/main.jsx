@@ -11,6 +11,8 @@ import Contact from './Components/Contact.jsx';
 import Users from './Components/Users.jsx';
 import Users2 from './Components/Users2.jsx';
 import UsersDetails from './Components/UsersDetails.jsx';
+import Posts from './Components/Posts.jsx';
+import PostsDetails from './Components/PostsDetails.jsx';
 
 
 //fetching for users2
@@ -31,24 +33,35 @@ const router = createBrowserRouter([
     loader : () => fetch('https://jsonplaceholder.typicode.com/users'),
     Component : Users,
   },
-  {//using suspense,props,use()
-    path : 'users2',
-    element : <Suspense fallback={<b>Data is loading....</b>}>
-<Users2 fetchUsers={fetchUsers}></Users2>
-    </Suspense>
-  },
   {
     path : 'users/:userId',
-
+    
     //loader : ({params}) => {
-    //console.log(params); //when the first show details is clicked, output -> {userId: '1'}. params returns an object. and it contains a property named 'userId' whose value is whatever after the users (users/whatever...) is set up for.
-    //console.log(params.userId);//1
-    //fetch('https://jsonplaceholder.typicode.com/users')},
+      //console.log(params); //when the first show details is clicked, output -> {userId: '1'}. params returns an object. and it contains a property named 'userId' whose value is whatever after the users (users/whatever...) is set up for.
+      //console.log(params.userId);//1
+      //fetch('https://jsonplaceholder.typicode.com/users')},
+      
+      loader : ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+      
+      Component : UsersDetails,
+    },
+    {//using suspense,props,use()
+      path : 'users2',
+      element : <Suspense fallback={<b>Data is loading....</b>}>
+  <Users2 fetchUsers={fetchUsers}></Users2>
+      </Suspense>
+    },
+  {
+    path : "posts",
+    loader : () => fetch("https://jsonplaceholder.typicode.com/posts"),
+    Component : Posts,
+  },
+  {
+   path : "posts/:postId",
+   loader : ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+   Component : PostsDetails,
+  },
 
-  loader : ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
-
-  Component : UsersDetails,
-  }
   ]
 }
 ]);
