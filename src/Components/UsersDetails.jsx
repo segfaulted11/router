@@ -1,15 +1,23 @@
 import React from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 
 const UsersDetails = () => {
   const users = useLoaderData();
   // console.log(users);//returns a particular object from the array of objects, based on whichever id is invoked.
 
+  //deconstructuring object
   const { id, name, phone, username, email, website, address, company } = users;
 
   const { street, city, zip, suite, geo } = address;
   const { lat, lng } = geo;
   const { catchPhrase, bs } = company;
+
+//navigate hook
+const navigate = useNavigate();
+const handleNavigate = ()=>{
+  navigate(-1);//return to the previous page
+}
+
 
   return (
     <div className="flex flex-col items-center">
@@ -20,6 +28,7 @@ const UsersDetails = () => {
         :`${id}th user's details`
         }
         </h1>
+        <button className="btn btn-primary" onClick={handleNavigate}>Go Back</button>
       <div className="bg-gray-400 w-3/6">
         <p>Name is : {name}.</p>
         <p>Phone is : {phone}.</p>

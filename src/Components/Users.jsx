@@ -6,8 +6,9 @@ const Users = () => {
     const users = useLoaderData();//'users' variable is array of objects
 
     return (
-        <div className='flex flex-col items-center'>
-            <h1 className='text-4xl font-bold text-blue-600'>This is Users page</h1>
+        <div>
+            <h1 className='text-4xl font-bold text-center text-blue-600'>This is Users page</h1>
+            <div className='grid grid-cols-3'>
             {
                 users.map((eachObject)=>
                 <div key={eachObject.id} className='border-2 border-purple-500 rounded-2xl p-15 m-2'>
@@ -18,6 +19,7 @@ const Users = () => {
                 </div>
             )
             }
+            </div>
         </div>
     );
 };
