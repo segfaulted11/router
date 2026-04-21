@@ -7,6 +7,7 @@ import './Root.css';
 
 const Root = () => {
 
+//useNavigation hook
 const navigation = useNavigation();
 const isNavigating = Boolean(navigation.location);
 

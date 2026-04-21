@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 
 const UsersDetails = () => {
   const users = useLoaderData();
@@ -12,11 +12,18 @@ const UsersDetails = () => {
   const { lat, lng } = geo;
   const { catchPhrase, bs } = company;
 
-//navigate hook
+//useNavigate hook
 const navigate = useNavigate();
 const handleNavigate = ()=>{
   navigate(-1);//return to the previous page
 }
+
+//useParams hook (using this you can access params on this component(UsersDeatils.jsx) beside the (main.jsx)
+
+//useParams hook ->
+const params = useParams();
+console.log(params);//same output as the main.jsx's params
+console.log(params.userId);//same output as the main.jsx's params
 
   return (
     <div className="flex flex-col items-center">
