@@ -18,7 +18,6 @@ const handleNavigate = ()=>{
   navigate(-1);//return to the previous page
 }
 
-
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-4xl text-red-600">
